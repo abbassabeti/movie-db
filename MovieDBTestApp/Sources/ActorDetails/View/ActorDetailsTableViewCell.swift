@@ -3,10 +3,10 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/10/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 // MARK: - ActorDetailsTableViewCell
@@ -14,7 +14,11 @@ import Foundation
 /// _ActorDetailsTableViewCell_ is the table view cell responsible to display a movie
 final class ActorDetailsTableViewCell: BaseTableViewCell {
     
-    let itemView = ActorDetailsItemView()
+    override class func reuseIdentifier() -> String {
+        return "actor_details"
+    }
+    
+    var itemView : ActorDetailsItemView!
     
     var viewModel: MovieViewModel? {
         
@@ -38,9 +42,10 @@ final class ActorDetailsTableViewCell: BaseTableViewCell {
     }
     
     private func setupItemView() {
-    
+        guard let itemView = UINib(nibName: "ActorDetailsItemView", bundle: nil).instantiate(withOwner: self, options: nil).first as? ActorDetailsItemView else {return}
+            //ActorDetailsItemView(frame: contentView.frame)
+        self.itemView = itemView
         contentView.addSubview(itemView)
-        itemView.frame = self.bounds
     }
     
     // MARK: - Constraints
@@ -53,11 +58,13 @@ final class ActorDetailsTableViewCell: BaseTableViewCell {
     }
     
     private func setupItemViewConstraints() {
-        
-        /*itemView.translatesAutoresizingMaskIntoConstraints = false
-        
-        itemView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        itemView.leadingAnchor*/
+        itemView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            itemView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            itemView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            itemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 5),
+            itemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -5)
+        ])
     }
     
     

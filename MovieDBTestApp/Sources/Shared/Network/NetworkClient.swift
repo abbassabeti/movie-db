@@ -3,7 +3,7 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/8/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import Foundation
@@ -49,7 +49,7 @@ class NetworkClient: NetworkClientProtocol {
         
         let configuration = URLSessionConfiguration.default
         configuration.urlCache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
-        configuration.timeoutIntervalForRequest = 5.0
+        configuration.timeoutIntervalForRequest = 50.0
         
         session = URLSession(configuration: configuration)
     }

@@ -3,7 +3,7 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/10/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import Foundation
@@ -65,8 +65,8 @@ extension ActorDetailsPresenter: ActorDetailsPresenterInput {
     /// - parameter movie: The movie
     func presentMovie(movie: Movie) {
         
-        let title = movie.title ?? movie.original_title ?? movie.original_name
-        let viewModel = MovieViewModel(title: title , backdropPath: movie.backdrop_path, vote_average: movie.vote_average, vote_count: movie.vote_count, overview: movie.overview, release_date: movie.release_date, id: movie.id, original_name: movie.original_title)
+        let title = movie.title ?? movie.originalTitle ?? movie.originalName
+        let viewModel = MovieViewModel(title: title , backdropPath: movie.backdropPath, voteAverage: movie.voteAverage, voteCount: movie.voteCount, overview: movie.overview, releaseDate: movie.releaseDate, id: movie.id, originalName: movie.originalTitle)
         
         output?.displayMovie(viewModel: viewModel)
     }

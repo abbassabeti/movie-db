@@ -3,7 +3,7 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/9/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
@@ -51,10 +51,6 @@ final class ActorsTableViewCell: BaseTableViewCell {
         contentView.addSubview(itemView)
         contentView.backgroundColor = UIColor.red
         itemView.layer.masksToBounds = false
-        /*NSLayoutConstraint(item: itemView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: contentView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 50).isActive = true
-        NSLayoutConstraint(item: itemView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: contentView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 50).isActive = true
-        NSLayoutConstraint(item: itemView, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: contentView, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1, constant: 50).isActive = true
-        NSLayoutConstraint(item: itemView, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: contentView, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1, constant: 50).isActive = true*/
         itemView.layer.shadowOffset = CGSize(width: 20, height: 20)
         itemView.layer.shadowColor = UIColor.black.cgColor
         itemView.layer.shadowOpacity = 0.73

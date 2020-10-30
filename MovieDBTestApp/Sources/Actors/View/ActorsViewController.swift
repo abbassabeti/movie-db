@@ -3,7 +3,7 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/9/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
@@ -87,6 +87,7 @@ final class ActorsViewController: UIViewController, ErrorPresenter {
         setupTableView()
         let query = actorsView.searchField.text
         fetchActors(query: query ,page: 1)
+        setupWatchLaterButton()
     }
     
     
@@ -104,7 +105,10 @@ final class ActorsViewController: UIViewController, ErrorPresenter {
         actorsView.tableView.register(ActorsTableViewCell.self, forCellReuseIdentifier: ActorsTableViewCell.reuseIdentifier())
         actorsView.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         actorsView.searchField.addTarget(self, action: #selector(refreshWithText(_:)), for: .editingChanged)
-
+    }
+    
+    private func setupWatchLaterButton(){
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Watch Later", style: .plain, target: self, action: #selector(watchLaterDidTapped))
     }
     
     
@@ -129,15 +133,14 @@ final class ActorsViewController: UIViewController, ErrorPresenter {
         actorsView.tableView.contentOffset = CGPoint.zero
         fetchActors(query: query, page: 1)
     }
+    @objc func watchLaterDidTapped() {
+        let movies = WatchlistWorker.sharedInstance.loadMovies() ?? []
+        router.navigateToWatchLater(movies: movies)
+    }
 }
 
 
 extension ActorsViewController : ActorsViewProtocol {
-    func watchLaterDidTapped() {
-        let movies = WatchlistWorker.sharedInstance.loadMovies() ?? []
-        router.navigateToWatchLater(movies: movies)
-    }
-    
     
 }
 
@@ -172,7 +175,7 @@ extension ActorsViewController: UITableViewDataSource {
             
             return UITableViewCell()
         }
-        
+        guard actorsViewModels.count > indexPath.row else {return cell}
         let viewModel = actorsViewModels[indexPath.row]
         cell.viewModel = viewModel
         cell.delegate = self

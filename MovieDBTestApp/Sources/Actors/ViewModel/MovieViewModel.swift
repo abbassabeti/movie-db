@@ -3,19 +3,31 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/13/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import Foundation
 
-struct MovieViewModel {
+class MovieViewModel {
     
     let title : String?
     let backdropPath: URL?
-    let vote_average: Float?
-    let vote_count: Int?
+    let voteAverage: Float?
+    let voteCount: Int?
     let overview: String?
-    let release_date: String?
+    let releaseDate: String?
     let id: Int?
-    let original_name: String?
+    let originalName: String?
+    
+    
+    init(title : String?, backdropPath: URL?, voteAverage: Float?, voteCount: Int?, overview: String?, releaseDate: String?, id: Int?, originalName: String?) {
+        self.title = title
+        self.backdropPath = backdropPath
+        self.voteAverage = voteAverage
+        self.voteCount = voteCount
+        self.overview = overview
+        self.releaseDate = releaseDate
+        self.id = id
+        self.originalName = originalName
+    }
 }

@@ -3,10 +3,11 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/10/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
+import Kingfisher
 
 
 // MARK: - WatchListItemView
@@ -23,14 +24,7 @@ final class WatchListItemView: UIView {
         didSet {
             
             titleLabel.text = viewModel?.title
-            imageView.setImageURL(url: viewModel?.backdropPath){[weak self] url, image in
-                
-                let fetchedUrl = url?.absoluteString
-                let modelUrl = self?.viewModel?.backdropPath?.absoluteString
-                if (fetchedUrl == modelUrl){
-                    self?.imageView.image = image
-                }
-            }
+            imageView.kf.setImage(with: viewModel?.backdropPath)
             imageView.contentMode = .scaleAspectFit
         }
     }

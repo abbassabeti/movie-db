@@ -3,7 +3,7 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/10/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
@@ -55,7 +55,6 @@ final class ActorDetailsView: UIView {
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.showsVerticalScrollIndicator = false
-        tableView.insertSubview(refreshControl, at: 0)
     }
     
     

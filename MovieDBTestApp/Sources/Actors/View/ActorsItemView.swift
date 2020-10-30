@@ -3,10 +3,11 @@
 //  MovieDBTestApp
 //
 //  Created by user on 5/11/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
+import Kingfisher
 
 protocol MovieCollectionViewDelegate: class {
     func groupCarouselTableViewDidSelectItem(movie: MovieViewModel)
@@ -24,14 +25,7 @@ final class ActorsItemView: UIView {
         
         didSet {
             titleLabel.text = viewModel?.title
-            imageView.setImageURL(url: viewModel?.profilePath) {[weak self] url, image in
-                
-                let fetchedUrl = url?.absoluteString
-                let modelUrl = self?.viewModel?.profilePath?.absoluteString
-                if (fetchedUrl == modelUrl){
-                    self?.imageView.image = image
-                }
-            }
+            imageView.kf.setImage(with: viewModel?.profilePath)
             collectionView.reloadData()
             collectionView.contentOffset = CGPoint.zero
         }

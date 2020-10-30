@@ -3,7 +3,7 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/8/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ struct MovieDBAPI {
     static let defaultLang = "en-US"
 }
 
-/// URLConvertible_ is a protocol to implement urls
+/// MARK:  - URLConvertible_ is a protocol to implement urls
 
 protocol URLConvertible {
     func url() -> URL?
@@ -30,8 +30,6 @@ protocol URLConvertible {
 /// _MovieDBAPIEndpoint_ is an enumeration of all Movie DB types of API requests
 ///
 /// - getTopArtists:
-/// - getActorDetails:
-/// - getMovieDetails:
 
 enum MovieDBAPIEndPoint {
     
@@ -39,7 +37,7 @@ enum MovieDBAPIEndPoint {
 }
 
 
-// MARK: - URLConvertible
+// MARK: - MovieDBAPIEndpoint : URLConvertible
 
 extension MovieDBAPIEndPoint: URLConvertible {
     

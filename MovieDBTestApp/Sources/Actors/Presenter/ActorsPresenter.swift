@@ -3,7 +3,7 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/9/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
@@ -69,9 +69,9 @@ extension ActorsPresenter : ActorsPresenterInput {
             
             let moviesViewModel = actor.known_for?.compactMap{ movieItem -> MovieViewModel in
                 
-                let title = movieItem.title ?? movieItem.original_title ?? movieItem.original_name
+                let title = movieItem.title ?? movieItem.originalTitle ?? movieItem.originalName
                 
-                return MovieViewModel(title: title ?? movieItem.original_title,backdropPath: movieItem.backdrop_path,vote_average: movieItem.vote_average,vote_count: movieItem.vote_count,overview: movieItem.overview,release_date: movieItem.release_date,id: movieItem.id,original_name: movieItem.original_title)
+                return MovieViewModel(title: title ?? movieItem.originalTitle,backdropPath: movieItem.backdropPath,voteAverage: movieItem.voteAverage,voteCount: movieItem.voteCount,overview: movieItem.overview,releaseDate: movieItem.releaseDate,id: movieItem.id,originalName: movieItem.originalTitle)
             }
             
             return ActorsViewModel(title: actor.name, profilePath: actor.profile_path,movies: moviesViewModel,popularity: actor.popularity,id: actor.id)

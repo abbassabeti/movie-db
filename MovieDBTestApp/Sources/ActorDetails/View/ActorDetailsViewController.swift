@@ -3,10 +3,11 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/10/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
+import Kingfisher
 
 
 // MARK: - ActorDetailsViewControllerInput
@@ -109,14 +110,7 @@ final class ActorDetailsViewController: UIViewController, ErrorPresenter {
     }
     
     private func fillViews() {
-        actorDetailsView.imageView.setImageURL(url: actorViewModel?.profilePath){[weak self] url, image in
-            
-            let fetchedUrl = url?.absoluteString
-            let modelUrl = self?.actorViewModel?.profilePath?.absoluteString
-            if (fetchedUrl == modelUrl){
-                self?.actorDetailsView.imageView?.image = image
-            }
-        }
+        actorDetailsView.imageView.kf.setImage(with: actorViewModel?.profilePath)
         actorDetailsView.popularity.text = actorViewModel?.popularity != nil ? "\(Int((actorViewModel?.popularity)!)) %" : "-"
         actorDetailsView.tableView.reloadData()
     }
@@ -202,9 +196,9 @@ extension ActorDetailsViewController: UITableViewDataSource {
         
         let movie = actorViewModel?.movies?[indexPath.row]
         
-        let title = movie?.title ?? movie?.original_name ?? "----"
+        let title = movie?.title ?? movie?.originalName ?? "----"
         
-        cell.viewModel = MovieViewModel(title : title, backdropPath: movie?.backdropPath, vote_average: movie?.vote_average, vote_count: movie?.vote_count, overview: movie?.overview, release_date: movie?.release_date,id: movie?.id, original_name: movie?.original_name)
+        cell.viewModel = MovieViewModel(title : title, backdropPath: movie?.backdropPath, voteAverage: movie?.voteAverage, voteCount: movie?.voteCount, overview: movie?.overview, releaseDate: movie?.releaseDate,id: movie?.id, originalName: movie?.originalName)
         
         return cell
     }

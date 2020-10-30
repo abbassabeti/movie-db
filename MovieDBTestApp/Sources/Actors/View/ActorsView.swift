@@ -3,13 +3,13 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/10/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
 
 protocol ActorsViewProtocol : class {
-    func watchLaterDidTapped()
+    //for probable later handshakings with controller
 }
 
 // MARK: - ActorsView
@@ -17,7 +17,6 @@ protocol ActorsViewProtocol : class {
 /// _ActorsView_ is the main view for _ActorsViewController_
 final class ActorsView: UIView {
     
-    @IBOutlet weak var watchLater: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchField: UITextField!
     let refreshControl = UIRefreshControl()
@@ -36,10 +35,6 @@ final class ActorsView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @IBAction func watchLaterDidTapped(_ sender: Any) {
-        delegate?.watchLaterDidTapped()
     }
     
     

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,29 +20,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-kM-5CW">
-                    <rect key="frame" x="5" y="5" width="365" height="0.0"/>
+                    <rect key="frame" x="5" y="5" width="365" height="25"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="03z-1x-XVp"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vdc-78-yM1">
-                    <rect key="frame" x="0.0" y="5" width="375" height="145"/>
-                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vdc-78-yM1" customClass="MyImageView" customModule="MovieDBTestApp" customModuleProvider="target">
+                    <rect key="frame" x="5" y="35" width="365" height="110"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="tTq-kM-5CW" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="3bQ-ro-VQC"/>
                 <constraint firstItem="tTq-kM-5CW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="G8E-ld-h1e"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Vdc-78-yM1" secondAttribute="trailing" id="TBL-e1-VGb"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Vdc-78-yM1" secondAttribute="bottom" id="Vsh-6n-sRR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Vdc-78-yM1" secondAttribute="trailing" constant="5" id="TBL-e1-VGb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Vdc-78-yM1" secondAttribute="bottom" constant="5" id="Vsh-6n-sRR"/>
                 <constraint firstAttribute="trailing" secondItem="tTq-kM-5CW" secondAttribute="trailing" constant="5" id="jwx-CW-jQY"/>
-                <constraint firstItem="Vdc-78-yM1" firstAttribute="top" secondItem="tTq-kM-5CW" secondAttribute="bottom" id="sHa-61-Bga"/>
-                <constraint firstItem="Vdc-78-yM1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="uQK-l4-aJS"/>
+                <constraint firstItem="Vdc-78-yM1" firstAttribute="top" secondItem="tTq-kM-5CW" secondAttribute="bottom" constant="5" id="sHa-61-Bga"/>
+                <constraint firstItem="Vdc-78-yM1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="uQK-l4-aJS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="138" y="116"/>
         </view>
     </objects>
 </document>

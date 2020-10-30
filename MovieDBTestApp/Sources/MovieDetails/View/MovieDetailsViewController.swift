@@ -3,10 +3,11 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/10/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
+import Kingfisher
 
 
 // MARK: - MovieDetailsViewControllerInput
@@ -107,17 +108,10 @@ final class MovieDetailsViewController: UIViewController, ErrorPresenter {
     
     private func updateWithViewModel(){
         movieDetailsView.delegate = self
-        movieDetailsView.imageView.setImageURL(url: movieViewModel?.backdropPath){[weak self] url, image in
-            
-            let fetchedUrl = url?.absoluteString
-            let modelUrl = self?.movieViewModel?.backdropPath?.absoluteString
-            if (fetchedUrl == modelUrl){
-                self?.movieDetailsView.imageView?.image = image
-            }
-        }
+        movieDetailsView.imageView.kf.setImage(with: movieViewModel?.backdropPath)
         movieDetailsView.titleLabel.text = movieViewModel?.title
         movieDetailsView.descriptionLabel.text = movieViewModel?.overview
-        movieDetailsView.dateLabel.text = movieViewModel?.release_date
+        movieDetailsView.dateLabel.text = movieViewModel?.releaseDate
         syncWatchList()
     }
     

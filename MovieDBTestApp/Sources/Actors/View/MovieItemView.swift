@@ -3,10 +3,11 @@
 //  MovieDBTestApp
 //
 //  Created by user on 5/11/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
+import Kingfisher
 
 final class MovieItemView: UIView {
     
@@ -17,16 +18,10 @@ final class MovieItemView: UIView {
     var viewModel: MovieViewModel? {
         
         didSet {
-            let title = (viewModel?.title != "") ? viewModel?.title : viewModel?.original_name
+            let title = (viewModel?.title != "") ? viewModel?.title : viewModel?.originalName
             titleLabel.text = title
-            imageView.setImageURL(url: viewModel?.backdropPath) {[weak self] url, image in
-                
-                let fetchedUrl = url?.absoluteString
-                let modelUrl = self?.viewModel?.backdropPath?.absoluteString
-                if (fetchedUrl == modelUrl){
-                    self?.imageView.image = image
-                }
-            }
+            titleLabel.sizeToFit()
+            imageView.kf.setImage(with: viewModel?.backdropPath)
         }
     }
     

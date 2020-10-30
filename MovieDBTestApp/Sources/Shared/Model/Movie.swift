@@ -3,7 +3,7 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/9/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import Foundation
@@ -16,153 +16,77 @@ struct Movie : Codable{
     
     let title: String?
     let popularity: Float?
-    let poster_path: URL?
-    let original_language: String?
-    let original_title: String?
-    let original_name: String?
-    let vote_average: Float?
-    let vote_count: Int?
+    let posterPath: URL?
+    let originalLanguage: String?
+    let originalTitle: String?
+    let originalName: String?
+    let voteAverage: Float?
+    let voteCount: Int?
     let id: Int?
     let video: Bool?
-    let media_type: String?
-    let genre_ids: [Int]?
-    let backdrop_path: URL?
+    let mediaType: String?
+    let genreIds: [Int]?
+    let backdropPath: URL?
     let adult: Bool?
     let overview: String?
-    let release_date: String?
+    let releaseDate: String?
     
-    enum MyStructKeys: String, CodingKey { // declaring our keys
+    enum CodingKeys: String, CodingKey { // declaring our keys
         case title = "title"
         case popularity = "popularity"
-        case poster_path = "poster_path"
-        case original_language = "original_language"
-        case vote_average = "vote_average"
-        case vote_count = "vote_count"
+        case posterPath = "poster_path"
+        case originalLanguage = "original_language"
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
         case id = "id"
         case video = "video"
-        case media_type = "media_type"
-        case genre_ids = "genre_ids"
-        case backdrop_path = "backdrop_path"
+        case mediaType = "media_type"
+        case genreIds = "genre_ids"
+        case backdropPath = "backdrop_path"
         case adult = "adulet"
         case overview = "overview"
-        case release_date = "release_date"
-        case original_title = "original_title"
-        case original_name = "original_name"
+        case releaseDate = "release_date"
+        case originalTitle = "original_title"
+        case originalName = "original_name"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        do{
-            self.title = try container.decode(String.self, forKey: .title)
-        }catch{
-            self.title = nil
-        }
+        self.title = try? container.decode(String.self, forKey: .title)
+        self.originalTitle = try? container.decode(String.self, forKey: .originalTitle)
+        self.originalName = try? container.decode(String.self, forKey: .originalName)
+        self.popularity = try? container.decode(Float.self, forKey: .popularity)
         
-        do{
-            self.original_title = try container.decode(String.self, forKey: .original_title)
-        }catch{
-            self.original_title = nil
-        }
-        
-        do{
-            self.original_name = try container.decode(String.self, forKey: .original_name)
-        }catch{
-            self.original_name = nil
-        }
-        
-        do{
-            self.popularity = try container.decode(Float.self, forKey: .popularity)
-        }catch{
-            self.popularity = nil
-        }
-        
-        do{
-            let path = try container.decode(String.self, forKey: .poster_path)
+        if let path = try? container.decode(String.self, forKey: .posterPath) {
             if let url = URL(string: "\(MovieDBAPI.baseImageURLString)\(path)") {
-                self.poster_path = url
-            }else {
-                
-                self.poster_path = nil
+                self.posterPath = url
+            }else{
+                self.posterPath = nil
             }
-        }catch{
-            
-            self.poster_path = nil
+        }else{
+            self.posterPath = nil
         }
         
-        do{
-            self.original_language = try container.decode(String.self, forKey: .original_language)
-        }catch{
-            self.original_language = nil
-        }
-        
-        
-        do{
-            self.vote_average = try container.decode(Float.self, forKey: .vote_average)
-        }catch{
-            self.vote_average = nil
-        }
-        
-        do{
-            self.vote_count = try container.decode(Int.self, forKey: .vote_count)
-        }catch{
-            self.vote_count = nil
-        }
-        
-        do{
-            self.id = try container.decode(Int.self, forKey: .id)
-        }catch{
-            self.id = nil
-        }
-        
-        do{
-            self.video = try container.decode(Bool.self, forKey: .video)
-        }catch{
-            self.video = nil
-        }
-        
-        do{
-            self.media_type = try container.decode(String.self, forKey: .media_type)
-        }catch{
-            self.media_type = nil
-        }
-        
-        do{
-            self.genre_ids = try container.decode(Array.self, forKey: .genre_ids)
-        }catch{
-            self.genre_ids = nil
-        }
-        
-        do{
-            let path = try container.decode(String.self, forKey: .backdrop_path)
+        self.originalLanguage = try? container.decode(String.self, forKey: .originalLanguage)
+        self.voteAverage = try? container.decode(Float.self, forKey: .voteAverage)
+        self.voteCount = try? container.decode(Int.self, forKey: .voteCount)
+        self.id = try? container.decode(Int.self, forKey: .id)
+        self.video = try? container.decode(Bool.self, forKey: .video)
+        self.mediaType = try? container.decode(String.self, forKey: .mediaType)
+        self.genreIds = try? container.decode(Array.self, forKey: .genreIds)
+        if let path = try? container.decode(String.self, forKey: .backdropPath){
             if let url = URL(string: "\(MovieDBAPI.baseImageURLString)\(path)") {
 
-                self.backdrop_path = url
-            }else {
-                
-                self.backdrop_path = nil
+                self.backdropPath = url
+            }else{
+                self.backdropPath = nil
             }
-        }catch{
-            
-            self.backdrop_path = nil
+        }else{
+            self.backdropPath = nil
         }
-        
-        do{
-            self.adult = try container.decode(Bool.self, forKey: .adult)
-        }catch{
-            self.adult = nil
-        }
-        
-        do{
-            self.overview = try container.decode(String.self, forKey: .overview)
-        }catch{
-            self.overview = nil
-        }
-        
-        do{
-            self.release_date = try container.decode(String.self, forKey: .release_date)
-        }catch{
-            self.release_date = nil
-        }
+        self.adult = try? container.decode(Bool.self, forKey: .adult)
+        self.overview = try? container.decode(String.self, forKey: .overview)
+        self.releaseDate = try? container.decode(String.self, forKey: .releaseDate)
     }
 }

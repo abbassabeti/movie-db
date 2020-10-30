@@ -3,10 +3,11 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/10/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
+import Kingfisher
 
 
 // MARK: - ActorDetailsItemView
@@ -14,33 +15,27 @@ import UIKit
 /// _ActorDetailsItemView_ is a view responsible for the display of details of actor's movie (movie)
 final class ActorDetailsItemView: UIView {
     
-    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var imgView: MyImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
     var viewModel: MovieViewModel? {
         
         didSet {
-            
             titleLabel.text = viewModel?.title
-            imgView.setImageURL(url: viewModel?.backdropPath){[weak self] url, image in
-                DispatchQueue.main.async {
-                    let fetchedUrl = url?.absoluteString
-                    let modelUrl = self?.viewModel?.backdropPath?.absoluteString
-                    if (fetchedUrl == modelUrl){
-                        self?.imgView.image = image
-                    }
-                }
-            }
+            imgView.translatesAutoresizingMaskIntoConstraints = false
+            imgView.kf.setImage(with: viewModel?.backdropPath)
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.awakeFromNib()
         setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        self.awakeFromNib()
     }
     
     // MARK: - Setup

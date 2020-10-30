@@ -3,7 +3,7 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/9/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
@@ -28,12 +28,11 @@ class WatchlistWorker {
         }
     }
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var context : NSManagedObjectContext?
     
     
     init() {
-        context = appDelegate.persistentContainer.viewContext
+        context = PersistHandler.persistentContainer.viewContext
     }
     // MARK: - Business Logic
     
@@ -76,12 +75,12 @@ class WatchlistWorker {
                 let id = data.value(forKey: "id") as? Int ?? 0
                 let backdrop = URL(string: data.value(forKey: "backdrop_path") as? String ?? "")
                 let overview = data.value(forKey: "overview") as? String ?? ""
-                let release_date = data.value(forKey: "release_date") as? String ?? ""
+                let releaseDate = data.value(forKey: "release_date") as? String ?? ""
                 let title = data.value(forKey: "title") as? String ?? ""
-                let vote_count = data.value(forKey: "vote_count") as? Int ?? 0
-                let vote_average = data.value(forKey: "vote_average") as? Float ?? 0
-                let original_name = data.value(forKey: "original_name") as? String ?? ""
-                movies.append(MovieViewModel(title: title, backdropPath: backdrop, vote_average: vote_average, vote_count: vote_count, overview: overview, release_date: release_date, id: id, original_name: original_name))
+                let voteCount = data.value(forKey: "vote_count") as? Int ?? 0
+                let voteAverage = data.value(forKey: "vote_average") as? Float ?? 0
+                let originalName = data.value(forKey: "original_name") as? String ?? ""
+                movies.append(MovieViewModel(title: title, backdropPath: backdrop, voteAverage: voteAverage, voteCount: voteCount, overview: overview, releaseDate: releaseDate, id: id, originalName: originalName))
             }
             currentMovies = movies
             return movies
@@ -139,10 +138,10 @@ class WatchlistWorker {
         newMovie.setValue(movie.id, forKey: "id")
         newMovie.setValue(movie.backdropPath?.absoluteString, forKey: "backdrop_path")
         newMovie.setValue(movie.overview, forKey: "overview")
-        newMovie.setValue(movie.release_date, forKey: "release_date")
+        newMovie.setValue(movie.releaseDate, forKey: "release_date")
         newMovie.setValue(movie.title, forKey: "title")
-        newMovie.setValue(movie.vote_average, forKey: "vote_average")
-        newMovie.setValue(movie.vote_count, forKey: "vote_count")
+        newMovie.setValue(movie.voteAverage, forKey: "vote_average")
+        newMovie.setValue(movie.voteCount, forKey: "vote_count")
         
         do {
             try context.save()

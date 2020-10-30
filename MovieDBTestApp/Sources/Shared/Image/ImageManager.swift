@@ -3,7 +3,7 @@
 //  MovieDBTestApp
 //
 //  Created by Abbas on 5/8/19.
-//  Copyright © 2019 CafeBazaar. All rights reserved.
+//  Copyright © 2019 Abbas. All rights reserved.
 //
 
 import UIKit
@@ -37,9 +37,7 @@ class ImageManager {
                         
                         strongSelf.setNetworkActivityIndicatorVisible(visible: false)
                         /// I wrote a memory store to do caching on images. But it seems to need some serious memory management more than the threshold I've already defined. For now, I disabled it to concentrate on main tasks.
-                        
-                        //strongSelf.memoryStore.saveImage(image: downloadedImage, url: url)
-                        
+                                            
                         completion(downloadedImage, networkStoreError)
                     })
                 }
